@@ -5,7 +5,8 @@
 esto de orden superior no tiene nada...
  */
 
-const url = "https://jsonplaceholder.typicode.com/posts"
+const url = "https://jsonplaceholder.typicode.com/posts" //endpoint
+
 const fetchData = async(url) => {
     const rawData = await fetch(url);
     const parsedData = await rawData.json();
