@@ -2,11 +2,12 @@ let users = require("../db/data")
 const { fetchAllUsers, fetchUserById } = require("./usersModel")
 const findById = require("../util/findById")
 
-//get all users
-const getAllUsers = async(req, res, next) => {
-    const users = await fetchAllUsers()
-    users.length ? res.status(200).json(users) : next()
+//get all users (refactorizado, ver en clase)
+const getAllUsers = async(req, res) => {
+    const dbResponse = await fetchAllUsers()
+    dbResponse.hasOwnProperty("error") ? res.status(500).json(dbResponse) : res.status(200).json(dbResponse)
 };
+
 //get user by id
 const getUserById = async(req, res, next) => {
     if (isNaN(+req.params.id)) {
