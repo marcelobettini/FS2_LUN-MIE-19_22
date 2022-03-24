@@ -2,8 +2,6 @@ const express = require("express")
 require("dotenv").config()
 const port = process.env.port || 3030
 require("./db/config")
-    //check DB connection
-
 
 const server = express()
 server.use(express.json())

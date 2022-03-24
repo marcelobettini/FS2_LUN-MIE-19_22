@@ -1,21 +1,21 @@
 const router = require("express").Router();
-const { getAllUsers, getUserById, addUser, deleteUser } = require("./usersController")
+const { listAll, listOne, addOne, removeOne } = require("./usersController")
 
 //get all users
-router.get("/", getAllUsers)
+router.get("/", listAll)
 
 //get user by id
-router.get("/:id", getUserById);
+router.get("/:id", listOne);
 
 //post new users
-router.post("/", addUser);
+router.post("/", addOne);
 
 //delete user by id
-router.delete("/:id", deleteUser);
+router.delete("/:id", removeOne);
 
-//404
-router.use((req, res) => {
-    res.status(404).json({ message: "Resource not found" })
-})
+// //404
+// router.use((req, res) => {
+//     res.status(404).json({ message: "Resource not found" })
+// })
 
 module.exports = router
