@@ -9,6 +9,7 @@ server.use(express.json())
 server.listen(port, (err) => {
     err ? console.log(`Error: ${err}`) : console.log(`Servidor en http://localhost:${port}`)
 })
+
 server.get("/", (req, res) => {
     const content = `
     <h1>Server con Express</h1>
@@ -20,18 +21,5 @@ server.get("/", (req, res) => {
 //Users router
 server.use("/users", require("./users/usersRoute"))
 
-//404
-server.use((req, res, next) => {
-    let error = new Error("Resource not found");
-    error.status = 404
-    next(error)
-
-})
-
-//Error handler
-server.use((error, req, res, next) => {
-    if (!error.status) {
-        error.status = 500
-    }
-    res.status(error.status).json({ status: error.status, message: error.message })
-})
+server.use(require("./middlewares/error404Handler"))
+server.use(require("./middlewares/error500Handler"))

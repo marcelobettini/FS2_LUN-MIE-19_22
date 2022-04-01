@@ -1,7 +1,5 @@
 const pool = require("../db/config")
 
-
-//get all users 
 const getAllUsers = async() => {
     const query = "SELECT * FROM users"
     try {
@@ -12,7 +10,6 @@ const getAllUsers = async() => {
     }
 }
 
-//get user by id
 const getUserById = async(id) => {
     const query = `SELECT * FROM users WHERE id = ${id}`
     try {
@@ -24,8 +21,7 @@ const getUserById = async(id) => {
     }
 }
 
-//add new user
-const addNewUser = async(user) => {
+const addUser = async(user) => {
     const query = await `INSERT INTO users SET ?`
     try {
         return await pool.query(query, user)
@@ -36,7 +32,6 @@ const addNewUser = async(user) => {
 
 }
 
-//delete user
 const deleteUserById = async(id) => {
     const query = `DELETE FROM users WHERE id = ${id}`
     try {
@@ -47,9 +42,8 @@ const deleteUserById = async(id) => {
     }
 }
 
-//edit user
 const editUserById = async(id, user) => {
-    const query = `UPDATE users SET ? WHERE id = ${id}` //check where with destruct
+    const query = `UPDATE users SET ? WHERE id = ${id}` //TODO: check where with destruct
     try {
         return await pool.query(query, user)
     } catch (error) {
@@ -58,5 +52,4 @@ const editUserById = async(id, user) => {
     }
 }
 
-
-module.exports = { getAllUsers, getUserById, addNewUser, deleteUserById, editUserById }
+module.exports = { getAllUsers, getUserById, addUser, deleteUserById, editUserById }
