@@ -1,15 +1,16 @@
+const { usersController } = require("./usersController");
+const { validatorCreateUser } = require("../validators/users");
+
 const router = require("express").Router();
-const { getAllUsers, getUserById, addUser, deleteUserById, editUserById } = require("./usersController")
-const { validatorCreateUser } = require("../validators/users")
 
-router.get("/", getAllUsers)
+router.get("/", usersController.getAllUsers);
 
-router.get("/:id", getUserById);
+router.get("/:id", usersController.getUserById);
 
-router.post("/", validatorCreateUser, addUser);
+router.post("/", validatorCreateUser, usersController.addUser);
 
-router.patch("/:id", editUserById)
+router.patch("/:id", usersController.editUserById);
 
-router.delete("/:id", deleteUserById);
+router.delete("/:id", usersController.deleteUserById);
 
-module.exports = router
+module.exports = router;
