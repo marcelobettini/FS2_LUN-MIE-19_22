@@ -1,5 +1,5 @@
 const userModel = require("./userModel");
-const isNotPositiveNumber = require("../utils/isNotPositiveNumber");
+const lessThanZero = require("../utils/lessThanZero");
 const { hash } = require("../utils/encryptUtils");
 
 exports.getAllUsers = async (req, res, next) => {
@@ -9,7 +9,7 @@ exports.getAllUsers = async (req, res, next) => {
 };
 
 exports.getUserById = async (req, res, next) => {
-  if (isNotPositiveNumber(req.params.id, next)) return;
+  if (lessThanZero(req.params.id, next)) return;
   const dbResponse = await userModel.getUserById(+req.params.id);
   if (dbResponse instanceof Error) return next(dbResponse);
   dbResponse.length ? res.status(200).json(dbResponse) : next();
@@ -24,14 +24,14 @@ exports.addUser = async (req, res, next) => {
 };
 
 exports.deleteUserById = async (req, res, next) => {
-  if (isNotPositiveNumber(req.params.id, next)) return;
+  if (lessThanZero(req.params.id, next)) return;
   const dbResponse = await userModel.deleteUserById(+req.params.id);
   if (dbResponse instanceof Error) return next(dbResponse);
   dbResponse.affectedRows ? res.status(204).end() : next();
 };
 
 exports.editUserById = async (req, res, next) => {
-  if (isNotPositiveNumber(req.params.id, next)) return;
+  if (lessThanZero(req.params.id, next)) return;
   const dbResponse = await userModel.editUserById(+req.params.id, req.body);
   if (dbResponse instanceof Error) return next(dbResponse);
   dbResponse.affectedRows ? res.status(200).json(req.body) : next();
