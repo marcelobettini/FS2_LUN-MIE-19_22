@@ -1,16 +1,16 @@
-const { usersController } = require("./userController");
-const { addUserValidator } = require("../validators/addUserValidator");
+const userController = require("./userController");
+const addUserValidator = require("../validators/addUserValidator");
 
 const router = require("express").Router();
 
-router.get("/", usersController.getAllUsers);
+router.get("/", userController.getAllUsers);
 
-router.get("/:id", usersController.getUserById);
+router.get("/:id", userController.getUserById);
 
-router.post("/", addUserValidator, usersController.addUser);
+router.post("/", addUserValidator, userController.addUser);
 
-router.patch("/:id", usersController.editUserById);
+router.patch("/:id", userController.editUserById);
 
-router.delete("/:id", usersController.deleteUserById);
+router.delete("/:id", userController.deleteUserById);
 
 module.exports = router;
