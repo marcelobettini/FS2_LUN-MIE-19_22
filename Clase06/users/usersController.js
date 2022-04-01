@@ -1,5 +1,5 @@
 const userModel = require("./usersModel");
-const notNumber = require("../utils/notNumber");
+const isNotPositiveNumber = require("../utils/isNotPositiveNumber");
 const { hash } = require("../utils/encryptUtils");
 
 module.exports.getAllUsers = async (req, res, next) => {
@@ -9,7 +9,7 @@ module.exports.getAllUsers = async (req, res, next) => {
 };
 
 module.exports.getUserById = async (req, res, next) => {
-  if (notNumber(req.params.id, next)) return;
+  if (isNotPositiveNumber(req.params.id, next)) return;
   const dbResponse = await userModel.getUserById(+req.params.id);
   if (dbResponse instanceof Error) return next(dbResponse);
   dbResponse.length ? res.status(200).json(dbResponse) : next();
@@ -24,14 +24,14 @@ module.exports.addUser = async (req, res) => {
 };
 
 module.exports.deleteUserById = async (req, res, next) => {
-  if (notNumber(req.params.id, next)) return;
+  if (isNotPositiveNumber(req.params.id, next)) return;
   const dbResponse = await userModel.deleteUserById(+req.params.id);
   if (dbResponse instanceof Error) return next(dbResponse);
   dbResponse.affectedRows ? res.status(204).end() : next();
 };
 
 module.exports.editUserById = async (req, res) => {
-  if (notNumber(req.params.id, next)) return;
+  if (isNotPositiveNumber(req.params.id, next)) return;
   const dbResponse = await userModel.editUserById(+req.params.id, req.body);
   if (dbResponse instanceof Error) return next(dbResponse);
   dbResponse.affectedRows ? res.status(200).json(req.body) : next();
