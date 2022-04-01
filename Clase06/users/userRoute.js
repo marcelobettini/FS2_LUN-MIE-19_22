@@ -1,4 +1,4 @@
-const { usersController } = require("./usersController");
+const { usersController } = require("./userController");
 const { addUserValidator } = require("../validators/addUserValidator");
 
 const router = require("express").Router();

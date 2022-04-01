@@ -1,4 +1,4 @@
-const userModel = require("./usersModel");
+const userModel = require("./userModel");
 const isNotPositiveNumber = require("../utils/isNotPositiveNumber");
 const { hash } = require("../utils/encryptUtils");
 
