@@ -1,6 +1,6 @@
 const userModel = require("./usersModel");
 const notNumber = require("../utils/notNumber");
-const { hashPassword, checkPassword } = require("../utils/handlePassword");
+const { hash } = require("../utils/encryptUtils");
 
 module.exports.getAllUsers = async (req, res, next) => {
   const dbResponse = await userModel.getAllUsers();
@@ -16,7 +16,7 @@ module.exports.getUserById = async (req, res, next) => {
 };
 
 module.exports.addUser = async (req, res) => {
-  const password = await hashPassword(req.body.password);
+  const password = await hash(req.body.password);
   const dbResponse = await userModel.addUser({ ...req.body, password });
   dbResponse instanceof Error
     ? next(dbResponse)
