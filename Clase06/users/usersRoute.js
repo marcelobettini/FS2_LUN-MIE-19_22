@@ -1,5 +1,5 @@
 const { usersController } = require("./usersController");
-const { validatorCreateUser } = require("../validators/users");
+const { addUserValidator } = require("../validators/addUserValidator");
 
 const router = require("express").Router();
 
@@ -7,7 +7,7 @@ router.get("/", usersController.getAllUsers);
 
 router.get("/:id", usersController.getUserById);
 
-router.post("/", validatorCreateUser, usersController.addUser);
+router.post("/", addUserValidator, usersController.addUser);
 
 router.patch("/:id", usersController.editUserById);
 

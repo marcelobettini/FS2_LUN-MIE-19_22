@@ -4,7 +4,7 @@ const { check, validationResult } = require("express-validator");
  * Trim y normalizeEmail son zanitizers,
  *  para más infomación ver {@link https://express-validator.github.io/docs/sanitization-chain-api.html documentación}
  */
-const validatorCreateUser = [
+module.exports.addUserValidator = [
   check("name")
     .exists()
     .withMessage("Name field required")
@@ -39,5 +39,3 @@ const validatorCreateUser = [
     }
   },
 ];
-
-module.exports = { validatorCreateUser };
