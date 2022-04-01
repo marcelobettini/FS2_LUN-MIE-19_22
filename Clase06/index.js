@@ -1,10 +1,11 @@
 const express = require("express");
 require("dotenv").config();
-const port = process.env.port || 3030;
 require("./db/config");
 
 const server = express();
 server.use(express.json());
+
+const port = process.env.port || 3030;
 
 server.listen(port, (err) => {
   err
@@ -13,11 +14,7 @@ server.listen(port, (err) => {
 });
 
 server.get("/", (req, res) => {
-  const content = `
-    <h1>Server con Express</h1>
-    <p>Hola ke asé</p>
-    `;
-  res.send(content);
+  res.send('<h1>Server con Express</h1>');
 });
 
 //Users router
