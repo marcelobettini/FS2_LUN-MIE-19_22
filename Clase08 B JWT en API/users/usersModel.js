@@ -13,10 +13,10 @@ const getAllUsers = () => {
 }
 
 //get user by id
-const getUserById = async(id) => {
+const getUserById = (id) => {
     const query = `SELECT * FROM users WHERE id = ${id}`
     try {
-        return await pool.query(query)
+        return pool.query(query)
     } catch (error) {
         error.message = error.code
         return error
