@@ -24,7 +24,12 @@ const register = async(req, res) => {
     const password = await hashPassword(req.body.password)
     const dbResponse = await registerNewUser({...req.body, password, image })
     if (dbResponse instanceof Error) return next(dbResponse)
-
+    const user = {
+        id: req.body.id,
+        name: req.body.name,
+        email: req.body.email,
+        image: req.body.image,
+    }
     const tokenData = {
         token: await tokenSign(user),
         user: user

@@ -2,10 +2,10 @@ const pool = require("../db/config")
 
 
 //get all users 
-const getAllUsers = async() => {
+const getAllUsers = () => {
     const query = "SELECT * FROM users"
     try {
-        return await pool.query(query)
+        return pool.query(query)
     } catch (error) {
         error.message = error.code
         return error
@@ -24,10 +24,10 @@ const getUserById = async(id) => {
 }
 
 //Register new user
-const registerNewUser = async(user) => {
-    const query = await `INSERT INTO users SET ?`
+const registerNewUser = (user) => {
+    const query = `INSERT INTO users SET ?`
     try {
-        return await pool.query(query, user)
+        return pool.query(query, user)
     } catch (error) {
         error.message = error.code
         return error
@@ -35,10 +35,10 @@ const registerNewUser = async(user) => {
 }
 
 //Login user
-const loginUser = async(email) => {
+const loginUser = (email) => {
     const query = `SELECT * FROM users WHERE email = '${email}'`
     try {
-        return await pool.query(query);
+        return pool.query(query);
     } catch (error) {
         error.message = error.code
         return error
@@ -46,10 +46,10 @@ const loginUser = async(email) => {
 }
 
 //delete user
-const deleteUserById = async(id) => {
+const deleteUserById = (id) => {
     const query = `DELETE FROM users WHERE id = ${id}`
     try {
-        return await pool.query(query)
+        return pool.query(query)
     } catch (error) {
         error.message = error.code
         return error
@@ -57,15 +57,14 @@ const deleteUserById = async(id) => {
 }
 
 //edit user
-const editUserById = async(id, user) => {
+const editUserById = (id, user) => {
     const query = `UPDATE users SET ? WHERE id = ${id}` //check where with destruct
     try {
-        return await pool.query(query, user)
+        return pool.query(query, user)
     } catch (error) {
         error.message = error.code
         return error
     }
 }
-
 
 module.exports = { getAllUsers, getUserById, registerNewUser, loginUser, deleteUserById, editUserById }
