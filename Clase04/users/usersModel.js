@@ -3,11 +3,11 @@ const connection = require("../db/config")
 // -------------------------------------------------------------------------
 //refactorizado (ver en clase)
 const getAllUsers = async() => {
-    const query = "SELECT * FROM users" //forzamos error con nombre de tabla
+    const query = "SELECT * FROM users"
     try {
         return await connection.query(query)
     } catch (error) {
-        return { "error": error.code } //cuál de todas las key conviene retornar?
+        return { "error": error.code }
     }
 }
 
