@@ -20,7 +20,7 @@ const listOne = async (req, res, next) => {
 };
 
 //Register new user //mostrar matchedData para evitar campos "extraños"
-const register = async (req, res) => {
+const register = async (req, res, next) => {
     const image = `${process.env.public_url}/${req.file.filename}`
     const password = await hashPassword(req.body.password)
     const dbResponse = await registerNewUser({ ...req.body, password, image })

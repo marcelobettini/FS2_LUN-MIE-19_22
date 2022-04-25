@@ -2,10 +2,10 @@ const pool = require("../db/config")
 
 
 //get all users 
-const getAllUsers = () => {
+const getAllUsers = async () => {
     const query = "SELECT * FROM users"
     try {
-        return pool.query(query)
+        return await pool.query(query)
     } catch (error) {
         error.message = error.code
         return error
@@ -13,10 +13,10 @@ const getAllUsers = () => {
 }
 
 //get user by id
-const getUserById = (id) => {
+const getUserById = async (id) => {
     const query = `SELECT * FROM users WHERE id = ${id}`
     try {
-        return pool.query(query)
+        return await pool.query(query)
     } catch (error) {
         error.message = error.code
         return error
@@ -24,10 +24,10 @@ const getUserById = (id) => {
 }
 
 //Register new user
-const registerNewUser = (user) => {
+const registerNewUser = async (user) => {
     const query = `INSERT INTO users SET ?`
     try {
-        return pool.query(query, user)
+        return await pool.query(query, user)
     } catch (error) {
         error.message = error.code
         return error
@@ -35,10 +35,10 @@ const registerNewUser = (user) => {
 }
 
 //Login user
-const loginUser = (email) => {
+const loginUser = async (email) => {
     const query = `SELECT * FROM users WHERE email = '${email}'`
     try {
-        return pool.query(query);
+        return await pool.query(query);
     } catch (error) {
         error.message = error.code
         return error
@@ -46,10 +46,10 @@ const loginUser = (email) => {
 }
 
 //delete user
-const deleteUserById = (id) => {
+const deleteUserById = async (id) => {
     const query = `DELETE FROM users WHERE id = ${id}`
     try {
-        return pool.query(query)
+        return await pool.query(query)
     } catch (error) {
         error.message = error.code
         return error
@@ -57,20 +57,20 @@ const deleteUserById = (id) => {
 }
 
 //edit user
-const editUserById = (id, user) => {
+const editUserById = async (id, user) => {
     const query = `UPDATE users SET ? WHERE id = ${id}` //check where with destruct
     try {
-        return pool.query(query, user)
+        return await pool.query(query, user)
     } catch (error) {
         error.message = error.code
         return error
     }
 }
 
-const changePasswordById = (id, password) => {
+const changePasswordById = async (id, password) => {
     const query = `UPDATE users SET password = '${password}' WHERE id = ${id}`
     try {
-        return pool.query(query);
+        return await pool.query(query);
     } catch (error) {
         error.message = error.code;
         return error;

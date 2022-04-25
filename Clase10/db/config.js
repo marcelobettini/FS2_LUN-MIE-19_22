@@ -12,8 +12,11 @@ const pool = mysql.createPool({
 
 });
 pool.getConnection((err, conn) => {
-    err ? console.warn("No conectado", { "error": err.message }) : console.log("Conexión a Base de Datos establecida...")
-    pool.releaseConnection(conn)
+    if (err) console.warn("No conectado", { "error": err.message })
+    else {
+        console.log("Conexión a Base de Datos establecida...")
+        pool.releaseConnection(conn)
+    }
 })
 pool.query = util.promisify(pool.query)
 
