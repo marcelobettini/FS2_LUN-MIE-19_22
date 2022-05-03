@@ -44,7 +44,7 @@ function App() {
         </Row>
       </Form>
       <Row className="text-center">
-        <TodoList todos={todos} />
+        <TodoList todos={todos} setTodos={setTodos} />
       </Row>
 
     </Container >

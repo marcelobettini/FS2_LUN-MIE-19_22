@@ -1,5 +1,7 @@
 import React from "react";
-const Todo = ({ todo }) => {
+const Todo = ({ todo, todos, setTodos }) => {
+
+
     return <div>{todo.description}</div>
 }
 
