@@ -27,13 +27,48 @@ const Tabs = () => {
                 <section>
                     {/* elaborar un render condicional, de acuerdo al tipo de recurso
                     que llega desde la API (recuerden, posts, users y comments no comparten las mismas propiedades, a excepción del id. Entonces, de acuerdo al endpoint será el render) */}
-                    {data.map((el) => {
+                    {endpoint === "users" && data.map((el, index) => {
                         return (
-                            <div key={el.id}>
-                                <p>{el.id}</p>
+                            <div key={index} className="fw-bold">
+                                <p>Name: <span className="fw-normal">{el.name}</span></p>
+                                <p>Email: <span className="fw-normal">{el.email}</span></p>
+                                <p>Username: <span className="fw-normal">{el.username}</span></p>
+                                <hr />
                             </div>
                         )
-                    })}
+                    })
+                    }
+                    {endpoint === "posts" && data.map((el) => {
+                        return (
+                            <div key={el.id} className="fw-bold">
+                                <h4>{el.title}</h4>
+                                <p>{el.body}</p>
+                                <hr />
+                            </div>
+                        )
+                    })
+                    }
+                    {endpoint === "comments" && data.map((el) => {
+                        return (
+                            <div key={el.id} className="fw-bold">
+                                <h4 className="mb-3">{el.name}</h4>
+                                <span>Comment by: {el.email}</span>
+                                <p>{el.body}</p>
+                                <hr />
+                            </div>
+                        )
+                    })
+                    }
+
+
+
+
+
+
+
+
+
+
                 </section>
             </Row>
         </Container>
