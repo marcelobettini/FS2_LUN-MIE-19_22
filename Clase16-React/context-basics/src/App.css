@@ -1,0 +1,9 @@
+body {
+    zoom: 1.6
+}
+
+.child {
+    border: 1px solid;
+    background-color: azure;
+    padding: 1em
+}
