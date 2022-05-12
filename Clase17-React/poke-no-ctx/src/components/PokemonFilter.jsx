@@ -1,7 +1,9 @@
-import React from 'react'
+import PokemonContext from '../PokemonContext'
+import { useContext } from 'react'
 import { TextField } from '@mui/material'
 
-const PokemonFilter = ({ setFilter }) => {
+const PokemonFilter = () => {
+    const { setFilter } = useContext(PokemonContext)
     return (
         <TextField label="Find Pokemon..." variant='filled'
             onChange={(e) => setFilter(e.target.value)}
@@ -10,3 +12,4 @@ const PokemonFilter = ({ setFilter }) => {
 }
 
 export default PokemonFilter
+

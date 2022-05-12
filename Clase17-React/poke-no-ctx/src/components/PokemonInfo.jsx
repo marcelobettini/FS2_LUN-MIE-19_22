@@ -3,7 +3,7 @@ import React from 'react'
 
 const PokemonInfo = ({ name: { english }, base, onDismiss }) => {
     return (
-        <Card>
+        <Card sx={{ height: 340, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
             <CardContent>
                 <Typography variant="h5">{english}</Typography>
                 {Object.keys(base).map((key) =>

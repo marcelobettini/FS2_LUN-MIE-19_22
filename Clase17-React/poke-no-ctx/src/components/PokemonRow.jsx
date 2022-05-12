@@ -1,6 +1,4 @@
 import { Button, TableRow, TableCell } from "@mui/material"
-import React from 'react'
-
 const PokemonRow = ({ pokemon, onInfo }) => {
     return (
         <TableRow>
@@ -12,5 +10,4 @@ const PokemonRow = ({ pokemon, onInfo }) => {
         </TableRow>
     )
 }
-
 export default PokemonRow
