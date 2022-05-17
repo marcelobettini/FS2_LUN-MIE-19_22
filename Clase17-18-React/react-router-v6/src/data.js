@@ -49,6 +49,10 @@ let facturas = [
     },
 ];
 
+export function getFactura(number) {
+    return facturas.find((factura) => factura.number === number)
+}
+
 export function getFacturas() {
     return facturas
 }
