@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+
+    <title>Socket.IO chat</title>
+</head>
+
+<body>
+    <h1>Chat App with Websocket protocol</h1>
+    <h2>Socket.IO library</h2>
+    <div>
+        <label for="user">User Name</label>
+        <input type="text" id="user">
+    </div>
+
+    <div id="typing">
+
+    </div>
+    <div id="inMsg" class="inMsg">
+        incoming messages
+    </div>
+
+    <label for="outMsg">Outgoing message</label>
+    <input type="text" id="outMsg">
+    <button id="btnSend">Send</button>
+    <!-- Socket.IO crea una var io -->
+    <script src="./socket.io/socket.io.js"></script>
+    <!-- en nuestro app vamos a correr io() -->
+    <script src="./app.js"></script>
+
+</body>
+
+</html>

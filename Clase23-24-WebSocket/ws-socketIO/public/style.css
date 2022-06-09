@@ -1,0 +1,8 @@
+body {
+    zoom: 1.4
+}
+.inMsg {
+    margin: 1em 0;
+    min-height: 400px;
+    background-color: darkgray;
+}
